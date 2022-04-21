@@ -12,9 +12,8 @@ export default async function happinessApi(
   res: NextApiResponse<HappinessApiResponse>,
 ): Promise<void> {
   const happiness = await fetchItems()
-  // console.log('happiness', happiness)
   if (happiness) {
-    res.status(200).json({ happiness })
+    res.status(200).json({ happiness: happiness })
   } else {
     res.status(400).json({ debugMessage: `failed to fetch happiness` })
   }

@@ -17,21 +17,22 @@ export type Happiness = {
   url: string
 }
 
-export async function fetchItems(): Promise<Happiness[]> {
+export async function fetchItems(): Promise<Happiness[] | undefined> {
   const cmd = new ScanCommand({
     TableName: 'happiness-checker',
   })
   const output = await dbClient.send(cmd)
   const items = output.Items
+  if (!items) return undefined
   const happiness: Happiness[] = []
   items.forEach((item) => {
     happiness.push({
-      messageId: item['message_id']['S'],
-      happinessId: item['happiness_id']['S'],
-      lineUserId: item['line_user_id']['S'],
-      userName: item['user_name']['S'],
-      value: item['value']['N'],
-      url: item['url']['S'],
+      messageId: item['message_id']['S'] as string,
+      happinessId: item['happiness_id']['S'] as string,
+      lineUserId: item['line_user_id']['S'] as string,
+      userName: item['user_name']['S'] as string,
+      value: item['value']['N'] as unknown as number,
+      url: item['url']['S'] as string,
     })
   })
   happiness.sort(function (a, b) {
