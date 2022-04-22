@@ -1,4 +1,5 @@
 import { DynamoDBClient, ScanCommand } from '@aws-sdk/client-dynamodb'
+import { Happiness } from '../model/happiness'
 
 const dbClient = new DynamoDBClient({
   credentials: {
@@ -7,15 +8,6 @@ const dbClient = new DynamoDBClient({
   },
   region: process.env.REGION as string,
 })
-
-export type Happiness = {
-  messageId: string
-  happinessId: string
-  lineUserId: string
-  userName: string
-  value: number
-  url: string
-}
 
 export async function fetchItems(): Promise<Happiness[] | undefined> {
   const cmd = new ScanCommand({
