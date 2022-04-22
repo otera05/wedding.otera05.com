@@ -25,12 +25,16 @@ export const GalleryTemplate: FC = () => {
     )
   if (!data) return <div>Loading...</div>
 
-  return data.results.map((h: Happiness) => (
-    <Card
-      key={h.message_id}
-      imageUrl={h.image_url}
-      author={h.user_name}
-      value={h.value}
-    ></Card>
-  ))
+  return (
+    <div className="grid sm:grid-cols-1 md:grid-cols-3 mb-10 justify-center">
+      {data.results.map((h: Happiness) => (
+        <Card
+          key={h.messageId}
+          imageUrl={h.url}
+          author={h.userName}
+          value={h.value}
+        ></Card>
+      ))}
+    </div>
+  )
 }
