@@ -1,13 +1,21 @@
 import { FC } from 'react'
 import useSWR from 'swr'
 
-import { Happiness } from '../../libs/photoUtils'
+import { Happiness } from '../../model/happiness'
 import { Card } from '../card/index'
 
-const fetcher = (url: string) => fetch(url).then((r) => r.json())
+export type listPhotoResponse = {
+  results: Happiness[]
+}
+
+const fetcher = (url: string): Promise<listPhotoResponse> =>
+  fetch(url).then((r) => r.json())
 
 export const GalleryTemplate: FC = () => {
-  const { data, error } = useSWR(`/api/photos`, fetcher)
+  const { data, error } = useSWR(
+    `https://happiness-api.otera05.com/photos`,
+    fetcher,
+  )
   if (error)
     return (
       <div>
@@ -17,11 +25,11 @@ export const GalleryTemplate: FC = () => {
     )
   if (!data) return <div>Loading...</div>
 
-  return data.happiness.map((h: Happiness) => (
+  return data.results.map((h: Happiness) => (
     <Card
-      key={h.messageId}
-      imageUrl={h.url}
-      author={h.userName}
+      key={h.message_id}
+      imageUrl={h.image_url}
+      author={h.user_name}
       value={h.value}
     ></Card>
   ))

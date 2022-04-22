@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { Happiness, fetchItems } from '../../src/libs/photoUtils'
+import { fetchItems } from '../../src/libs/photoUtils'
+import { Happiness } from '../../src/model/happiness'
 
 // API のレスポンス型
 export type HappinessApiResponse = {

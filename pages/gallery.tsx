@@ -1,6 +1,4 @@
 import type { NextPage } from 'next'
-import { Happiness } from '../src/libs/photoUtils'
-import useSWR from 'swr'
 import { GalleryTemplate } from '../src/components/gallery/index'
 
 const Gallery: NextPage = () => {
