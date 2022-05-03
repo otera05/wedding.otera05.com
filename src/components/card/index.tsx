@@ -66,20 +66,22 @@ export const Card: FC<CardProps> = ({ imageUrl, author, value }) => {
         onRequestClose={closeModal}
         style={customStyles}
       >
-        <Image src={imageUrl}></Image>
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-          {value} pt
-        </h5>
-        <div className="flex justify-between">
-          <p className="mb-3 font-normal text-lg text-gray-700">
-            投稿者: {author}さん
-          </p>
-          <button
-            className="px-4 bg-gray-200 text-gray-500 rounded-full"
-            onClick={closeModal}
-          >
-            ✗
-          </button>
+        <div className="w-3/4 md:w-1/2 lg:w-2/3 mx-auto">
+          <Image src={imageUrl}></Image>
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+            {value} pt
+          </h5>
+          <div className="flex justify-between">
+            <p className="mb-3 font-normal text-lg text-gray-700">
+              投稿者: {author}さん
+            </p>
+            <button
+              className="px-4 bg-gray-200 text-gray-500 rounded-full"
+              onClick={closeModal}
+            >
+              ✗
+            </button>
+          </div>
         </div>
       </Modal>
     </div>
