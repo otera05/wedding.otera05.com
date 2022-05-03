@@ -26,7 +26,7 @@ export const GalleryTemplate: FC = () => {
   if (!data) return <div>Loading...</div>
 
   return (
-    <div className="grid sm:grid-cols-1 md:grid-cols-3 mb-10 justify-center">
+    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-10 justify-center">
       {data.results.map((h: Happiness) => (
         <Card
           key={h.messageId}

@@ -46,7 +46,7 @@ export const Card: FC<CardProps> = ({ imageUrl, author, value }) => {
   }
 
   return (
-    <div className="max-w-md md:w-96 mx-4 bg-white mb-10 rounded-lg border border-gray-200 shadow-md">
+    <div className="max-w-md md:w-80 lg:w-max mx-4 bg-white mb-10 rounded-lg border border-gray-200 shadow-md">
       <img
         className="object-cover object-center w-96 h-60 rounded-t-lg m-auto"
         src={imageUrl}
@@ -70,9 +70,17 @@ export const Card: FC<CardProps> = ({ imageUrl, author, value }) => {
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
           {value} pt
         </h5>
-        <p className="mb-3 font-normal text-lg text-gray-700">
-          投稿者: {author}さん
-        </p>
+        <div className="flex justify-between">
+          <p className="mb-3 font-normal text-lg text-gray-700">
+            投稿者: {author}さん
+          </p>
+          <button
+            className="px-4 bg-gray-200 text-gray-500 rounded-full"
+            onClick={closeModal}
+          >
+            ✗
+          </button>
+        </div>
       </Modal>
     </div>
   )
